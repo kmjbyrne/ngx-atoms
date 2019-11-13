@@ -37,6 +37,12 @@
       ],
       "@kbpc/http/*": [
         "dist/kbpc/http/*"
+      ],
+      "atoms": [
+        "dist/atoms"
+      ],
+      "atoms/*": [
+        "dist/atoms/*"
       ]
     }
   }
