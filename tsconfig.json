@@ -18,6 +18,26 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@kbpc/components": [
+        "dist/kbpc/components"
+      ],
+      "@kbpc/components/*": [
+        "dist/kbpc/components/*"
+      ],
+      "@kbpc/atoms": [
+        "dist/kbpc/atoms"
+      ],
+      "@kbpc/atoms/*": [
+        "dist/kbpc/atoms/*"
+      ],
+      "@kbpc/http": [
+        "dist/kbpc/http"
+      ],
+      "@kbpc/http/*": [
+        "dist/kbpc/http/*"
+      ]
+    }
   }
 }
