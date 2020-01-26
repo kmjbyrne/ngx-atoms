@@ -1,49 +1,37 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "@kbpc/components": [
-        "dist/kbpc/components"
-      ],
-      "@kbpc/components/*": [
-        "dist/kbpc/components/*"
-      ],
-      "@kbpc/atoms": [
-        "dist/kbpc/atoms"
-      ],
-      "@kbpc/atoms/*": [
-        "dist/kbpc/atoms/*"
-      ],
-      "@kbpc/http": [
-        "dist/kbpc/http"
-      ],
-      "@kbpc/http/*": [
-        "dist/kbpc/http/*"
-      ],
-      "atoms": [
-        "dist/atoms"
-      ],
-      "atoms/*": [
-        "dist/atoms/*"
-      ]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2015",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "paths": {
+            "atoms": [
+                "dist/atoms"
+            ],
+            "atoms/*": [
+                "dist/atoms/*"
+            ],
+            "core": [
+                "dist/core"
+            ],
+            "core/*": [
+                "dist/core/*"
+            ]
+        }
     }
-  }
 }

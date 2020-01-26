@@ -1,0 +1,38 @@
+.atom-button {
+    padding: 1rem 1.5rem;
+    background-color: rgb(12, 52, 126);
+    color: white;
+    background-color: #811616;
+    color: #dadada;
+    border: none;
+    border-radius: .25rem;
+    font-size: 1rem;
+    line-height: 2.8;
+    padding: 0 1.5em;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 3px;
+    margin: 4px 0;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3);
+    transition: background-color .3s, box-shadow .3s, color .3s, opacity .3s;
+    outline: none;
+
+    &:hover {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, .1), 0 4px 8px rgba(0, 0, 0, .3);
+        color: #fff
+    }
+
+    &:focus {
+        box-shadow: 0 3px 3px rgba(0, 0, 0, .1), 0 5px 8px rgba(0, 0, 0, .16), 0 9px 20px rgba(0, 0, 0, .16) !important
+    }
+
+    &--sm {
+        font-size: 0.5rem;
+        padding: 0rem 0.5rem;
+    }
+
+    &--edit {
+        background-color: gold;
+        color: black;
+    }
+}

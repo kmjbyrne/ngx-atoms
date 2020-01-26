@@ -1,152 +1,197 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "atoms-showcase": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "projects/atoms-showcase",
-      "sourceRoot": "projects/atoms-showcase/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/atoms-showcase",
-            "index": "projects/atoms-showcase/src/index.html",
-            "main": "projects/atoms-showcase/src/main.ts",
-            "polyfills": "projects/atoms-showcase/src/polyfills.ts",
-            "tsConfig": "projects/atoms-showcase/tsconfig.app.json",
-            "aot": false,
-            "assets": [
-              "projects/atoms-showcase/src/favicon.ico",
-              "projects/atoms-showcase/src/assets"
-            ],
-            "styles": [
-              "projects/atoms-showcase/src/styles.css"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [{
-                "replace": "projects/atoms-showcase/src/environments/environment.ts",
-                "with": "projects/atoms-showcase/src/environments/environment.prod.ts"
-              }],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [{
-                "type": "initial",
-                "maximumWarning": "2mb",
-                "maximumError": "5mb"
-              }]
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "atoms": {
+            "projectType": "library",
+            "root": "projects/atoms",
+            "sourceRoot": "projects/atoms/src",
+            "prefix": "ngx",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/atoms/tsconfig.lib.json",
+                        "project": "projects/atoms/ng-package.json"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/atoms/src/test.ts",
+                        "tsConfig": "projects/atoms/tsconfig.spec.json",
+                        "karmaConfig": "projects/atoms/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/atoms/tsconfig.lib.json",
+                            "projects/atoms/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "atoms-showcase:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "atoms-showcase:build:production"
+        "core": {
+            "projectType": "library",
+            "root": "projects/core",
+            "sourceRoot": "projects/core/src",
+            "prefix": "ngx-core",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/core/tsconfig.lib.json",
+                        "project": "projects/core/ng-package.json"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/core/src/test.ts",
+                        "tsConfig": "projects/core/tsconfig.spec.json",
+                        "karmaConfig": "projects/core/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/core/tsconfig.lib.json",
+                            "projects/core/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
             }
-          }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "atoms-showcase:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/atoms-showcase/src/test.ts",
-            "polyfills": "projects/atoms-showcase/src/polyfills.ts",
-            "tsConfig": "projects/atoms-showcase/tsconfig.spec.json",
-            "karmaConfig": "projects/atoms-showcase/karma.conf.js",
-            "assets": [
-              "projects/atoms-showcase/src/favicon.ico",
-              "projects/atoms-showcase/src/assets"
-            ],
-            "styles": [
-              "projects/atoms-showcase/src/styles.css"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/atoms-showcase/tsconfig.app.json",
-              "projects/atoms-showcase/tsconfig.spec.json",
-              "projects/atoms-showcase/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/atoms-showcase/e2e/protractor.conf.js",
-            "devServerTarget": "atoms-showcase:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "atoms-showcase:serve:production"
+        "atoms-demo": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "projects/atoms-demo",
+            "sourceRoot": "projects/atoms-demo/src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/atoms-demo",
+                        "index": "projects/atoms-demo/src/index.html",
+                        "main": "projects/atoms-demo/src/main.ts",
+                        "polyfills": "projects/atoms-demo/src/polyfills.ts",
+                        "tsConfig": "projects/atoms-demo/tsconfig.app.json",
+                        "aot": false,
+                        "assets": [
+                            "projects/atoms-demo/src/favicon.ico",
+                            "projects/atoms-demo/src/assets"
+                        ],
+                        "styles": [
+                            "projects/atoms-demo/src/styles.scss"
+                        ],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "projects/atoms-demo/src/environments/environment.ts",
+                                "with": "projects/atoms-demo/src/environments/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "atoms-demo:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "atoms-demo:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "atoms-demo:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/atoms-demo/src/test.ts",
+                        "polyfills": "projects/atoms-demo/src/polyfills.ts",
+                        "tsConfig": "projects/atoms-demo/tsconfig.spec.json",
+                        "karmaConfig": "projects/atoms-demo/karma.conf.js",
+                        "assets": [
+                            "projects/atoms-demo/src/favicon.ico",
+                            "projects/atoms-demo/src/assets"
+                        ],
+                        "styles": [
+                            "projects/atoms-demo/src/styles.scss"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/atoms-demo/tsconfig.app.json",
+                            "projects/atoms-demo/tsconfig.spec.json",
+                            "projects/atoms-demo/e2e/tsconfig.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "projects/atoms-demo/e2e/protractor.conf.js",
+                        "devServerTarget": "atoms-demo:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "atoms-demo:serve:production"
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     },
-    "atoms": {
-      "projectType": "library",
-      "root": "projects/atoms",
-      "sourceRoot": "projects/atoms/src",
-      "prefix": "ngx",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/atoms/tsconfig.lib.json",
-            "project": "projects/atoms/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/atoms/src/test.ts",
-            "tsConfig": "projects/atoms/tsconfig.spec.json",
-            "karmaConfig": "projects/atoms/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/atoms/tsconfig.lib.json",
-              "projects/atoms/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    }
-  },
-  "defaultProject": "@kbpc/components"
+    "defaultProject": "atoms-demo"
 }

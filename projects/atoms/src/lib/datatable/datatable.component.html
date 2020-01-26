@@ -1,0 +1,49 @@
+<div class="datatable__searchbox" *ngIf="search">
+    <lib-table-search [formstyle]="formstyles" (searchEditEvent)="searchEvent($event)"></lib-table-search>
+</div>
+<table class="datatable">
+    <thead class="datatable__header">
+        <tr class="datatable__tr">
+            <ng-container *ngFor="let header of headers">
+                <th class="datatable__th datatable__sortable">
+                    <lib-table-header [name]="header.name" [sortKey]="currentSortKey"
+                        (emitSortClick)="sortHandler($event)"></lib-table-header>
+                </th>
+            </ng-container>
+            <ng-container *ngIf="actions">
+                <th class="datatable__th" [colSpan]="colspan()">
+                    <lib-table-header [name]="'Actions'" [sort]="false" (emitSortClick)="sortHandler($event)">
+                    </lib-table-header>
+                </th>
+            </ng-container>
+        </tr>
+    </thead>
+    <tbody class="datatable__body">
+        <tr class="datatable__tr" *ngFor="let row of data">
+            <ng-container *ngFor="let header of headers">
+                <td class="datatable__td">
+                    <ng-container *ngIf="header.link; else second">
+                        <a href="{{ row[header.name] }}">Link</a>
+                    </ng-container>
+                    <ng-template #second>
+                        <ng-container *ngIf="header.nested; else unnested"> {{ splitNestedKey(row, header.key) }}
+                        </ng-container>
+                        <ng-template #unnested> {{ row[header.key] }} </ng-template>
+                    </ng-template>
+                </td>
+            </ng-container>
+            <ng-container *ngIf="actions">
+                <td class="datatable__td datatable__actions" *ngFor="let action of actions.items">
+                    <ng-container *ngIf="buttonOverride; else default">
+                        <button [ngClass]="buttonOverride"
+                            (click)="emitActionEvent(action.key, row)">{{ action.name }}</button>
+                    </ng-container>
+                    <ng-template #default>
+                        <button class="atom-button atom-button--edit atom-button--sm"
+                            (click)="emitActionEvent(action.key, row)">{{ action.name }}</button>
+                    </ng-template>
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

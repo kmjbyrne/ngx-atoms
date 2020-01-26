@@ -1,0 +1,78 @@
+@import "../button/button.component.scss";
+
+:host ::ng-deep {
+    .datatable {
+        color: #232f3e;
+        position: relative;
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        font-size: .9rem;
+        word-break: normal;
+        word-break: keep-all;
+        color: #53545a;
+        border: 1px solid #dddee4;
+        font-size: 14px;
+
+        &__header {
+            text-transform: uppercase;
+            text-align: left;
+            font-weight: 600;
+            background-color: #4d4d4d;
+            color: white;
+            border-top: 1px solid #dddee4;
+            box-shadow: 0 0 5px 0 hsla(0, 0%, 50.2%, .15);
+            margin: 1rem 0;
+        }
+
+        &__th,
+        &__td {
+            position: relative;
+        }
+
+        &__tr {
+            background-color: transparent;
+            border-bottom: 1px solid #dddee4;
+        }
+
+        &__tr:nth-child(2n) {
+            background-color: #f8f8f8;
+        }
+
+        &__th {
+            border: 1px solid rgba(0, 0, 0, .12);
+            padding: 1rem .75rem;
+        }
+
+        &__td {
+            padding: 0.2rem 0.5rem;
+        }
+
+        &__sortable:after {
+            content: "\25BF";
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &--active &__sortable:after {
+            transform: rotate(180deg);
+        }
+
+        &__td {
+            border: 1px solid rgba(0, 0, 0, .12);
+        }
+
+        &__button {
+            padding: 0.25rem;
+            background-color: rgb(151, 16, 68);
+            border-color: darken(coral, 5%);
+            color: white;
+        }
+
+        &__searchbox {
+            text-align: right;
+        }
+    }
+}

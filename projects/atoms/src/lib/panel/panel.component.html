@@ -1,0 +1,8 @@
+<div class="ui-panel">
+    <a class="ui-panel__head" (click)="toggle()">
+        <div class="ui-panel__title">{{ title }}</div>
+    </a>
+    <div class="ui-panel__body" [class.ui-panel--hidden]="collapse">
+        <ng-content></ng-content>
+    </div>
+</div>

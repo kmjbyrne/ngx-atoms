@@ -1,0 +1,9 @@
+<form class="app-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="app-form__row">
+        <div class="app-form__group">
+            <input class="app-form__input" type="text" formControlName="search" name="search" required
+                (input)="inputListen()">
+            <div class="app-form__label">Search Table</div>
+        </div>
+    </div>
+</form>

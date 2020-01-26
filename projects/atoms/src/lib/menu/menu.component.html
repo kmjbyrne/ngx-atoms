@@ -1,0 +1,23 @@
+<nav class="navbar" [ngClass]="isToggled? 'navbar--hide' : 'navbar'">
+    <div class="navbar__inner">
+        <div class="navbar__links">
+            <div *ngFor="let link of config">
+                <ng-template [ngIf]="!link.parent" [ngIfElse]="group">
+                    <a (click)="clickEvent(getRoute(link.route))" class="navbar__link">
+                        <i class="navbar__icon fa fa-plus"></i>
+                        <span>{{ link.label }}</span>
+                    </a>
+                </ng-template>
+                <ng-template #group>
+                    <div class="navbar__submenu">
+                        <a (click)="clickEvent(getRoute(link.route, child.route))" class="navbar__link"
+                            *ngFor="let child of link">
+                            <i class="navbar__icon fa fa-plus"></i>
+                            <span>{{ child.label }}</span>
+                        </a>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</nav>
