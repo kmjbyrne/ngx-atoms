@@ -10,6 +10,7 @@ import { AbstractFormComponent } from './core/form-base/form-base.component';
 import { AtomButtonModule } from './button/button.module';
 import { CardsModule } from './cards/cards.module';
 import { AtomDatatableModule } from './datatable/datatable.module';
+import { MenuModule } from './menu/menu.module';
 
 
 @NgModule({
@@ -22,18 +23,23 @@ import { AtomDatatableModule } from './datatable/datatable.module';
         HeaderModule,
         DirectivesModule,
         FormsModule,
+        MenuModule,
         AtomPanelModule,
         TodoListModule,
         AtomLoadingSpinnerModule,
         AtomsFormsElementModule,
     ],
     exports: [
+        // Components
+        AbstractFormComponent,
+        // Modules
         AtomButtonModule,
         CardsModule,
         AtomDatatableModule,
         HeaderModule,
         DirectivesModule,
         FormsModule,
+        MenuModule,
         AtomPanelModule,
         TodoListModule,
         AtomLoadingSpinnerModule,

@@ -22,17 +22,26 @@
         color: #fff
     }
 
-    &:focus {
-        box-shadow: 0 3px 3px rgba(0, 0, 0, .1), 0 5px 8px rgba(0, 0, 0, .16), 0 9px 20px rgba(0, 0, 0, .16) !important
-    }
-
     &--sm {
-        font-size: 0.5rem;
+        font-size: 0.6rem;
         padding: 0rem 0.5rem;
     }
 
     &--edit {
         background-color: gold;
         color: black;
+
+        &:hover {
+            color: black;
+        }
+    }
+
+    &--green {
+        background-color: green;
+        color: white;
+
+        &:hover {
+            color: white;
+        }
     }
 }

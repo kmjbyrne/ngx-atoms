@@ -1,0 +1,14 @@
+.navbar-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: 500ms;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    border-left: 1px dotted grey;
+
+    &--expand {
+        max-height: 500px;
+        transition: 500ms;
+    }
+}

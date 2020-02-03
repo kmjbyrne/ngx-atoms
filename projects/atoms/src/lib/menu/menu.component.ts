@@ -16,7 +16,17 @@ export class AtomMenuComponent implements OnInit {
         this.config = [
             {
                 label: 'test',
-                route: 'test'
+                route: 'test',
+                nested: [
+                    {
+                        label: 'test',
+                        route: 'test'
+                    },
+                    {
+                        label: 'test',
+                        route: 'test'
+                    }
+                ]
             },
             {
                 label: 'test',
@@ -61,7 +71,7 @@ export class AtomMenuComponent implements OnInit {
         return child ? `${link}/${child}` : `${link}`;
     }
 
-    clickEvent(link) {
+    catchLink(link) {
         console.log(link);
     }
 

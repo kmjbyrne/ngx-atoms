@@ -1,0 +1,15 @@
+.navbar-link {
+    display: flex;
+    padding: 1rem 1.25rem;
+    color: white;
+    align-items: center;
+    justify-content: flex-start;
+
+    span {
+        flex: 1;
+    }
+
+    &:hover {
+        background-color: rgba(72, 198, 255, .8);
+    }
+}

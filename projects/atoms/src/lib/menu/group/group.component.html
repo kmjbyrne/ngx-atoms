@@ -1,0 +1,4 @@
+<atom-menu-item [link]="link" (click)="toggleGroup()" (clickEvent)="propagateEvent($event)"></atom-menu-item>
+<ng-container *ngIf="link.nested">
+    <atom-submenu [group]="link.nested" [show]="showGroup" (clickEvent)="propagateEvent($event)"></atom-submenu>
+</ng-container>

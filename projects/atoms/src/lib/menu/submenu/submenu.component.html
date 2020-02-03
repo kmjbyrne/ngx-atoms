@@ -1,0 +1,3 @@
+<div class="navbar-submenu navbar-submenu--expand" [ngClass]="{'navbar-submenu--expand': show}">
+    <atom-menu-item (clickEvent)="click($event)" [link]="child" *ngFor="let child of group"></atom-menu-item>
+</div>
