@@ -1,0 +1,11 @@
+<div class="atom-panel-header" [ngClass]="{'atom-panel-header--toggled' : isToggled }" (click)="togglePanel()">
+    <h3 class="atom-panel-header__title">{{ title }}</h3>
+    <sub>{{ subtitle }}</sub>
+    <ng-container *ngIf="toggle">
+        <div class="atom-panel-header__options">
+            <a class="atom-panel-header__toggle icon-angle-down">
+                <fa-icon icon="angle-down"></fa-icon>
+            </a>
+        </div>
+    </ng-container>
+</div>

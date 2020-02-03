@@ -1,0 +1,29 @@
+<header class="header">
+    <div class="header__wrapper">
+        <div class="header__block">
+            <h1 class="header__logo">App Name</h1>
+        </div>
+        <div class="header__block">
+            <div class="header__menu-item header--centered">
+                <div class="header__menu-links">
+                    <div class="header__menu-link" *ngFor="let item of config.center">
+                        <a class="header__link" [routerLink]="[item.route]">
+                            <fa-icon class="header__icon" [icon]="['fas', item.icon]" [fixedWidth]="true"></fa-icon>
+                            <span class="header__menu-link-display">{{ item.label }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__block">
+            <ul class="header__menu-links" *ngFor="let item of config.right">
+                <li class="header__menu-link">
+                    <a class="header__link" [routerLink]="[item.route]">
+                        <fa-icon [icon]="['fas', item.icon]"></fa-icon>
+                        <span class="header__menu-link-display">{{ item.label }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

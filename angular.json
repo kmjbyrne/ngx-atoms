@@ -7,7 +7,7 @@
             "projectType": "library",
             "root": "projects/atoms",
             "sourceRoot": "projects/atoms/src",
-            "prefix": "ngx",
+            "prefix": "atom",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -42,7 +42,7 @@
             "projectType": "library",
             "root": "projects/core",
             "sourceRoot": "projects/core/src",
-            "prefix": "ngx-core",
+            "prefix": "atom-core",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",

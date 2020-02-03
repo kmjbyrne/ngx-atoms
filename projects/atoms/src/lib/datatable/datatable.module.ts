@@ -6,14 +6,14 @@ import { TableSearchComponent } from './table-search/table-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [DatatableComponent, TableHeaderComponent, TableSearchComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    DatatableComponent
-  ]
+    declarations: [DatatableComponent, TableHeaderComponent, TableSearchComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    exports: [
+        DatatableComponent
+    ]
 })
-export class DatatableModule { }
+export class AtomDatatableModule { }

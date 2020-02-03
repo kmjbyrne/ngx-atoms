@@ -1,0 +1,142 @@
+.atom-form {
+    margin: 1.5rem 0;
+    $_color: inherit;
+    flex: 1;
+
+    &__group {
+        display: flex;
+        position: relative;
+        margin: 1rem 0rem;
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__row &__group:not(:last-child) {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    &__row &__group:last-child {
+        margin-left: 1.5rem;
+    }
+
+    &__row &__group:first-child {
+        margin-left: 0;
+        margin-right: 1.5rem;
+    }
+
+    &__row {
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__select,
+    &__input,
+    &__label {
+        padding: 0 1.5rem;
+    }
+
+    &__select,
+    &__input {
+        outline: none;
+        z-index: 1;
+        position: relative;
+        background: none;
+        width: 100%;
+        height: 60px;
+        border: 0;
+        // letter-spacing: 2px;
+        font-size: 1rem;
+        color: inherit;
+        font-weight: 400;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.2rem;
+    }
+
+    select {
+        text-indent: 0.5rem;
+    }
+
+    &__file-input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    &__filename {
+        flex: 1;
+    }
+
+    &__file-input-label {
+        color: #f1e5e6;
+        background-color: red;
+        white-space: nowrap;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        padding: 0.625rem 1.25rem;
+    }
+
+    &__label,
+    &__error-label {
+        text-transform: capitalize;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        color: inherit;
+        font-weight: 300;
+        margin: 0 1rem 0 0;
+        -webkit-transition: 0.2s ease;
+        transition: 0.2s ease;
+        background-color: inherit;
+
+    }
+
+    &__error-label {
+        color: red;
+        -webkit-transform: translate(0, -140%) scale(0.75);
+        transform: translate(0, -140%) scale(0.75);
+        height: 30px;
+        font-weight: 500;
+        left: auto;
+        right: 0;
+    }
+
+    // &--ok,
+    &__input:focus {
+        border-color: black;
+    }
+
+    &__input:focus+&__label,
+    &__input:valid+&__label {
+        color: inherit;
+        transform: translate(0%, -160%);
+        font-size: 0.7rem;
+        height: 15px;
+        padding: 0;
+        font-weight: 500;
+        border-color: green;
+        margin-left: 1.59rem;
+        background-color: transparent;
+    }
+
+    &__select:focus+&__label,
+    &__select:valid+&__label {
+        color: red;
+        -webkit-transform: translate(-19%, -50%) scale(0.5) !important;
+        transform: translate(-19%, -140%) scale(0.5) !important;
+        height: 15px;
+        font-weight: 500;
+        border-color: green;
+    }
+}

@@ -1,30 +1,43 @@
 import { NgModule } from '@angular/core';
-import { AtomsComponent } from './atoms.component';
-import { MenuModule } from './menu/menu.module';
-import { CommonModule } from '@angular/common';
-import { PanelModule } from './panel/panel.module';
-import { LoadingSpinnerModule } from './loading-spinner/loading-spinner.module';
-import { DatatableModule } from './datatable/datatable.module';
+import { HeaderModule } from './header/header.module';
+import { DirectivesModule } from './directives/directives.module';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from './button/button.module';
+import { AtomPanelModule } from './panel/atom-panel.module';
+import { TodoListModule } from './todo-list/todo-list.module';
+import { AtomLoadingSpinnerModule } from './loading-spinner/loading-spinner.module';
+import { AtomsFormsElementModule } from './form-element/form.module';
+import { AbstractFormComponent } from './core/form-base/form-base.component';
+import { AtomButtonModule } from './button/button.module';
+import { CardsModule } from './cards/cards.module';
+import { AtomDatatableModule } from './datatable/datatable.module';
+
 
 @NgModule({
-    declarations: [AtomsComponent],
+    declarations: [AbstractFormComponent],
+    providers: [],
     imports: [
-        CommonModule,
-        MenuModule,
-        PanelModule,
+        AtomButtonModule,
+        CardsModule,
+        AtomDatatableModule,
+        HeaderModule,
+        DirectivesModule,
         FormsModule,
-        LoadingSpinnerModule,
-        DatatableModule,
-        ButtonModule
+        AtomPanelModule,
+        TodoListModule,
+        AtomLoadingSpinnerModule,
+        AtomsFormsElementModule,
     ],
     exports: [
-        MenuModule,
-        PanelModule,
-        LoadingSpinnerModule,
-        DatatableModule,
-        ButtonModule
+        AtomButtonModule,
+        CardsModule,
+        AtomDatatableModule,
+        HeaderModule,
+        DirectivesModule,
+        FormsModule,
+        AtomPanelModule,
+        TodoListModule,
+        AtomLoadingSpinnerModule,
+        AtomsFormsElementModule,
     ]
 })
 export class AtomsModule { }

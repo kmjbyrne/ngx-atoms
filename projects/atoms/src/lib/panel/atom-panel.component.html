@@ -1,0 +1,24 @@
+<div class="atom-panel" [ngClass]="{'atom-panel--toggled' : isToggled}">
+    <atom-panel-header [title]="title" [subtitle]="subtitle" [toggle]="toggle" (clickedHeader)="eventHandler($event)">
+    </atom-panel-header>
+    <div class="atom-panel__image" *ngIf="image">
+        <img [src]="image">
+    </div>
+    <ng-template #content>
+        <ng-content></ng-content>
+    </ng-template>
+    <ng-container *ngIf="toggle; else noToggle">
+        <div class="atom-panel__body" [atomCollapse]="isToggled">
+            <div class="atom-panel__content">
+                <ng-container *ngTemplateOutlet="content"></ng-container>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #noToggle>
+        <div class="atom-panel__body">
+            <div class="atom-panel__content">
+                <ng-container *ngTemplateOutlet="content"></ng-container>
+            </div>
+        </div>
+    </ng-template>
+</div>

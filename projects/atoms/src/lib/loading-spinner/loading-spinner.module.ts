@@ -5,12 +5,12 @@ import { AtomLoadingSpinnerComponent } from './loading-spinner.component';
 
 
 @NgModule({
-  declarations: [AtomLoadingSpinnerComponent],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    AtomLoadingSpinnerComponent
-  ]
+    declarations: [AtomLoadingSpinnerComponent],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        AtomLoadingSpinnerComponent
+    ]
 })
-export class LoadingSpinnerModule { }
+export class AtomLoadingSpinnerModule { }
