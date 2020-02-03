@@ -1,5 +1,5 @@
 {
-    "name": "@kbpc/atoms-core",
+    "name": "@snapatoms/angular-core",
     "version": "0.1.1",
     "private": false,
     "peerDependencies": {

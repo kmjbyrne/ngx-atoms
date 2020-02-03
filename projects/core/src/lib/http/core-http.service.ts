@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 // import { Resource } from '../models/resource';
-import { GetResponse } from '../../interface/get-response';
+import { GetResponse } from '../interface/get-response';
 
 export class CoreHttpResourceService<T extends any> {
 
@@ -20,8 +20,7 @@ export class CoreHttpResourceService<T extends any> {
         return `${this.url}/${this.endpoint}/${id}`;
     }
 
-    public get(): Observable<GetResponse>;
-    public get(resourceId: number | string): Observable<GetResponse>;
+    public get(esourceId: number | string): Observable<GetResponse>;
     public get(resourceId?: string | number): Observable<GetResponse> {
         return this.http.get(this.getEndpoint(resourceId)).pipe(
             map((resp: any) => resp as GetResponse)
