@@ -1,13 +1,14 @@
 {
     "name": "ngx-atoms",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "release": "standard-version"
     },
     "private": true,
     "dependencies": {
@@ -46,6 +47,7 @@
         "karma-jasmine-html-reporter": "^1.4.0",
         "ng-packagr": "^5.4.0",
         "protractor": "~5.4.0",
+        "standard-version": "^7.1.0",
         "ts-node": "~7.0.0",
         "tsickle": "^0.37.0",
         "tslint": "~5.15.0",
