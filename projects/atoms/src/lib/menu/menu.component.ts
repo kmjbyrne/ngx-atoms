@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'ngx-menu',
+    selector: 'atom-menu',
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss']
 })
