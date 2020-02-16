@@ -12,7 +12,7 @@
             </ng-container>
             <ng-container *ngIf="actions">
                 <th class="datatable__th" [colSpan]="colspan()">
-                    <lib-table-header [name]="'Actions'" [sort]="false" (emitSortClick)="sortHandler($event)">
+                    <lib-table-header name="Actions" [sort]="false" (emitSortClick)="sortHandler($event)">
                     </lib-table-header>
                 </th>
             </ng-container>
@@ -33,14 +33,14 @@
                 </td>
             </ng-container>
             <ng-container *ngIf="actions">
-                <td class="datatable__td datatable__actions" *ngFor="let action of actions.items">
+                <td class="datatable__td datatable__actions" *ngFor="let action of actions">
                     <ng-container *ngIf="buttonOverride; else default">
                         <button [ngClass]="buttonOverride"
-                            (click)="emitActionEvent(action.key, row)">{{ action.name }}</button>
+                            (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
                     </ng-container>
                     <ng-template #default>
                         <button class="atom-button atom-button--edit atom-button--sm"
-                            (click)="emitActionEvent(action.key, row)">{{ action.name }}</button>
+                            (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
                     </ng-template>
                 </td>
             </ng-container>

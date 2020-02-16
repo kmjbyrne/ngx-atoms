@@ -12,7 +12,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
         ReactiveFormsModule,
     ],
     exports: [
-        FormsComponent
+        FormsComponent,
+        FormsModule,
+        ReactiveFormsModule,
     ]
 })
 export class AtomsFormsElementModule { }

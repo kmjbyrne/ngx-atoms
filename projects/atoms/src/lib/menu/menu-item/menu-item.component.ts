@@ -14,7 +14,7 @@ export class MenuItemComponent implements OnInit {
     ngOnInit() {
     }
 
-    click() {
+    click(link?) {
         this.clickEvent.emit(this.link);
     }
 

@@ -1,4 +1,4 @@
-import { Directive, HostBinding, Input, ElementRef, AfterViewInit, DoCheck } from '@angular/core';
+import { Directive, HostBinding, Input, ElementRef, AfterViewInit, DoCheck, OnChanges } from '@angular/core';
 
 @Directive({
     selector: '[atomCollapse]'

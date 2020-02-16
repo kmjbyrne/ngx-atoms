@@ -24,6 +24,5 @@ export class AtomPanelModule {
     constructor(library: FaIconLibrary) {
         // Add an icon to the library for convenient access in other components
         library.addIcons(faAngleDown);
-        console.log(library);
     }
 }

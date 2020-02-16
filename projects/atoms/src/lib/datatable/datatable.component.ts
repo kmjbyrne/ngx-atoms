@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    Output,
+    EventEmitter,
+    AfterViewInit
+} from '@angular/core';
 
 @Component({
     // tslint:disable-next-line: component-selector
@@ -14,6 +21,7 @@ export class DatatableComponent implements AfterViewInit {
     @Input() buttonOverride: any;
     @Input() formstyles: any;
     @Input() search = true;
+    @Input() editable = true;
 
     @Output() clickEvent = new EventEmitter();
 
@@ -32,8 +40,7 @@ export class DatatableComponent implements AfterViewInit {
         return this.data;
     }
 
-    constructor() {
-    }
+    constructor() {}
 
     ngAfterViewInit() {
         if (this.data) {
@@ -63,7 +70,7 @@ export class DatatableComponent implements AfterViewInit {
 
     sort(key: string) {
         const dataClone = [...this.data];
-        dataClone.sort((x, y) => (x[key] > y[key]) ? 1 : -1);
+        dataClone.sort((x, y) => (x[key] > y[key] ? 1 : -1));
         this.data = [...this.checkOrder(dataClone)];
     }
 
@@ -75,9 +82,7 @@ export class DatatableComponent implements AfterViewInit {
         this.sort(header);
     }
 
-    sortedBy(name: string) {
-
-    }
+    sortedBy(name: string) {}
 
     sortHandler(name: string) {
         this.sortBy(name);
@@ -99,7 +104,12 @@ export class DatatableComponent implements AfterViewInit {
             let match = false;
             this.config.forEach(configKey => {
                 const value = item[configKey.key] || '';
-                if (value.toString().toLowerCase().includes(searchExpression.toString().toLowerCase())) {
+                if (
+                    value
+                        .toString()
+                        .toLowerCase()
+                        .includes(searchExpression.toString().toLowerCase())
+                ) {
                     match = true;
                     return true;
                 }
@@ -121,6 +131,11 @@ export class DatatableComponent implements AfterViewInit {
     }
 
     colspan(): number {
-        return this.actions.items.length;
+        if (this.actions) {
+            if (this.actions.length === undefined) {
+                return 0;
+            }
+            return this.actions.length || 0;
+        }
     }
 }
