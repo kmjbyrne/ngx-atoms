@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,22 +7,36 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./form.component.scss']
 })
 export class FormsComponent implements OnInit {
-    @Input() form: FormGroup;
-    @Input() formKey: string;
+    @Input() parent: FormGroup;
+    @Input() control: string;
     @Input() type = 'text';
-    @Input() default: string;
+    @Input() default: string = undefined;
     @Input() submitted = false;
+    @Input() readonly = false;
 
-    constructor() { }
+    modified = false;
+
+    @ViewChild('input') input: ElementRef;
+
+    constructor() {}
 
     ngOnInit() {
         if (this.default) {
-            this.form.get(this.formKey).setValue(this.default);
+            this.parent.get(this.control).setValue(this.default);
         }
+        this.parent.valueChanges.subscribe(val => {
+            if (this.readonly) {
+                this.modified = this.inputLabelDetect(val);
+            }
+        });
     }
 
-    onSubmit() {
-
+    inputLabelDetect(val) {
+        if (this.parent.get(this.control).value !== '') {
+            return true;
+        }
+        return false;
     }
 
+    onSubmit() {}
 }

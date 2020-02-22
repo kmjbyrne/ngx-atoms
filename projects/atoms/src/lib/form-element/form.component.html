@@ -1,10 +1,10 @@
-<form class="atom-form" [formGroup]="form" (submit)="onSubmit()">
-    <div class="atom-form__group">
-        <input class="atom-form__input" [type]="type" required autocomplete="off" [formControlName]="formKey">
+<form class="atom-form" [formGroup]="parent" (submit)="onSubmit()" [class.atom-form--readonly]="readonly">
+    <div class="atom-form__group" [class.atom-form--active]="modified">
+        <input class="atom-form__input" [type]="type" required autocomplete="off" [formControlName]="control" [readonly]="readonly">
         <div class="atom-form__label">
             <ng-content></ng-content>
         </div>
-        <div class="atom-form__error-label" *ngIf="!form.get(formKey).valid && submitted"> Required
+        <div class="atom-form__error-label" *ngIf="!parent.get(control).valid && submitted"> Required
         </div>
     </div>
 </form>
