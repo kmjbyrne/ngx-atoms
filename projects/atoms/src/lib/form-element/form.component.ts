@@ -13,6 +13,8 @@ export class FormsComponent implements OnInit {
     @Input() default: string = undefined;
     @Input() submitted = false;
     @Input() readonly = false;
+    @Input() options: [];
+    @Input() defaultSelect: any;
 
     modified = false;
 
@@ -29,6 +31,10 @@ export class FormsComponent implements OnInit {
                 this.modified = this.inputLabelDetect(val);
             }
         });
+
+        if (this.defaultSelect) {
+            this.parent.get(this.control).setValue(this.defaultSelect);
+        }
     }
 
     inputLabelDetect(val) {

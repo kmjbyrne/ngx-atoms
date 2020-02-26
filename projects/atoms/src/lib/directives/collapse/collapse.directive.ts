@@ -16,7 +16,7 @@ export class CollapseDirective implements AfterViewInit, DoCheck {
     private lastState = false;
     private initHeight: number;
 
-    constructor(public el: ElementRef) { }
+    constructor(public el: ElementRef) {}
 
     ngDoCheck() {
         this.measureHeight();

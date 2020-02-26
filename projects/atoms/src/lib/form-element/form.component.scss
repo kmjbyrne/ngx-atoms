@@ -1,5 +1,9 @@
+:host {
+    width: 100%;
+}
+
 .atom-form {
-    margin: 1.5rem 0;
+    margin: 0.25rem 0;
     $_color: inherit;
     flex: 1;
 
@@ -120,11 +124,12 @@
     &__input:focus {
         border-color: black;
     }
+
     &--active &__label,
     &__input:focus + &__label,
     &__input:valid + &__label {
         color: inherit;
-        transform: translate(0%, -160%);
+        transform: translate(0%, -305%);
         font-size: 0.7rem;
         height: 15px;
         padding: 0;
@@ -136,9 +141,9 @@
 
     &__select:focus + &__label,
     &__select:valid + &__label {
-        color: red;
-        -webkit-transform: translate(-19%, -50%) scale(0.5) !important;
-        transform: translate(-19%, -140%) scale(0.5) !important;
+        // color: rgb(151, 18, 18);
+        -webkit-transform: translate(-12.5%, -324%) scale(0.75) !important;
+        transform: translate(-12.5%, -324%) scale(0.75) !important;
         height: 15px;
         font-weight: 500;
         border-color: green;
