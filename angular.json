@@ -14,6 +14,11 @@
                     "options": {
                         "tsConfig": "projects/atoms/tsconfig.lib.json",
                         "project": "projects/atoms/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+
+                        }
                     }
                 },
                 "test": {

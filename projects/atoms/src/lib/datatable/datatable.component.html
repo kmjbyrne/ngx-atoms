@@ -1,7 +1,7 @@
 <div class="datatable__searchbox" *ngIf="search">
     <lib-table-search [formstyle]="formstyles" (searchEditEvent)="searchEvent($event)"></lib-table-search>
 </div>
-<table class="datatable">
+<table class="datatable" *ngIf="viewdata">
     <thead class="datatable__header">
         <tr class="datatable__tr">
             <ng-container *ngFor="let header of headers">
@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody class="datatable__body">
-        <tr class="datatable__tr" *ngFor="let row of data">
+        <tr class="datatable__tr" *ngFor="let row of viewdata">
             <ng-container *ngFor="let header of headers">
                 <td class="datatable__td">
                     <ng-container *ngIf="header.link; else second">
@@ -39,7 +39,9 @@
                             (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
                     </ng-container>
                     <ng-template #default>
-                        <button class="atom-button atom-button--edit atom-button--sm"
+                        <button class="atom-button atom-button--sm"
+                            [class.atom-button--green]="action.key === 'approve'"
+                            [class.atom-button--edit]="action.key === 'edit'"
                             (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
                     </ng-template>
                 </td>
@@ -47,3 +49,6 @@
         </tr>
     </tbody>
 </table>
+<div *ngIf="!viewdata">
+    Loading ...
+</div>

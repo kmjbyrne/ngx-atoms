@@ -14,7 +14,10 @@
         <div class="atom-form__label">
             <ng-content></ng-content>
         </div>
-        <div class="atom-form__error-label" *ngIf="!parent.get(control).valid && submitted"> Required
-        </div>
+        <ng-container *ngIf="true">
+            <div class="atom-form__error-label" *ngIf="!parent.get(control).valid && submitted"> Required
+            </div>
+        </ng-container>
+
     </div>
 </form>

@@ -5,3 +5,22 @@
     vertical-align: inherit;
     font-weight: bold;
 }
+
+.datatable {
+    &--active {
+        font-weight: 600;
+        color: yellow;
+    }
+
+    &--active:after {
+        content: '\25BF';
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &--reverse:after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+}

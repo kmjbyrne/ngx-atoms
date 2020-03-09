@@ -129,7 +129,7 @@
     &__input:focus + &__label,
     &__input:valid + &__label {
         color: inherit;
-        transform: translate(0%, -305%);
+        transform: translate(0%, -170%);
         font-size: 0.7rem;
         height: 15px;
         padding: 0;
@@ -142,8 +142,8 @@
     &__select:focus + &__label,
     &__select:valid + &__label {
         // color: rgb(151, 18, 18);
-        -webkit-transform: translate(-12.5%, -324%) scale(0.75) !important;
-        transform: translate(-12.5%, -324%) scale(0.75) !important;
+        -webkit-transform: translate(-12.5%, -190%) scale(0.75) !important;
+        transform: translate(-12.5%, -190%) scale(0.75) !important;
         height: 15px;
         font-weight: 500;
         border-color: green;

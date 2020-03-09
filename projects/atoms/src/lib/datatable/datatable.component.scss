@@ -1,13 +1,14 @@
-@import "../button/button.component.scss";
+@import '../button/button.component.scss';
 
 :host ::ng-deep {
+    display: block;
     .datatable {
         color: #232f3e;
         position: relative;
         width: 100%;
         border-collapse: collapse;
         overflow: hidden;
-        font-size: .9rem;
+        font-size: 0.9rem;
         word-break: normal;
         word-break: keep-all;
         color: #53545a;
@@ -21,7 +22,7 @@
             background-color: #4d4d4d;
             color: white;
             border-top: 1px solid #dddee4;
-            box-shadow: 0 0 5px 0 hsla(0, 0%, 50.2%, .15);
+            box-shadow: 0 0 5px 0 hsla(0, 0%, 50.2%, 0.15);
             margin: 1rem 0;
         }
 
@@ -40,20 +41,12 @@
         }
 
         &__th {
-            border: 1px solid rgba(0, 0, 0, .12);
-            padding: 1rem .75rem;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            padding: 1rem 0.75rem;
         }
 
         &__td {
             padding: 0.2rem 0.5rem;
-        }
-
-        &__sortable:after {
-            content: "\25BF";
-            position: absolute;
-            right: 0.5rem;
-            top: 50%;
-            transform: translateY(-50%);
         }
 
         &--active &__sortable:after {
@@ -61,7 +54,7 @@
         }
 
         &__td {
-            border: 1px solid rgba(0, 0, 0, .12);
+            border: 1px solid rgba(0, 0, 0, 0.12);
         }
 
         &__button {

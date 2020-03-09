@@ -11,7 +11,7 @@ import { AtomButtonModule } from './button/button.module';
 import { CardsModule } from './cards/cards.module';
 import { AtomDatatableModule } from './datatable/datatable.module';
 import { MenuModule } from './menu/menu.module';
-
+import { AtomAlertsModule } from './alerts/alerts.module';
 
 @NgModule({
     declarations: [AbstractFormComponent],
@@ -24,10 +24,11 @@ import { MenuModule } from './menu/menu.module';
         DirectivesModule,
         FormsModule,
         MenuModule,
+        AtomAlertsModule,
         AtomPanelModule,
         TodoListModule,
         AtomLoadingSpinnerModule,
-        AtomsFormsElementModule,
+        AtomsFormsElementModule
     ],
     exports: [
         // Components
@@ -39,11 +40,12 @@ import { MenuModule } from './menu/menu.module';
         HeaderModule,
         DirectivesModule,
         FormsModule,
+        AtomAlertsModule,
         MenuModule,
         AtomPanelModule,
         TodoListModule,
         AtomLoadingSpinnerModule,
-        AtomsFormsElementModule,
+        AtomsFormsElementModule
     ]
 })
-export class AtomsModule { }
+export class AtomsModule {}

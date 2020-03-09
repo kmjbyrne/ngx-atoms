@@ -1,4 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    Output,
+    EventEmitter,
+    AfterViewInit,
+    AfterContentInit,
+    AfterViewChecked,
+    ChangeDetectorRef,
+    ViewChildren
+} from '@angular/core';
+import { TableHeaderComponent } from './table-header/table-header.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     // tslint:disable-next-line: component-selector
@@ -6,7 +19,7 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@
     templateUrl: 'datatable.component.html',
     styleUrls: ['datatable.component.scss']
 })
-export class DatatableComponent implements AfterViewInit {
+export class DatatableComponent implements AfterViewChecked {
     @Input() config: any[];
     @Input() data: any[];
     @Input() templates: [];
@@ -18,10 +31,15 @@ export class DatatableComponent implements AfterViewInit {
 
     @Output() clickEvent = new EventEmitter();
 
+    @ViewChildren(TableHeaderComponent) headerComponents;
+
+    constructor(private cdRef: ChangeDetectorRef) {}
+
     order = true;
     currentSortKey = '';
     context = {};
-    viewdata: any[];
+    viewdata: any = false;
+    displayData = new BehaviorSubject<any[]>(undefined);
 
     get headers() {
         if (this.config) {
@@ -33,15 +51,16 @@ export class DatatableComponent implements AfterViewInit {
         return this.data;
     }
 
-    constructor() {}
-
-    ngAfterViewInit() {
+    ngAfterViewChecked() {
         if (this.data) {
             this.cloneInputData();
+            this.cdRef.detectChanges();
         }
+        this.cdRef.detectChanges();
     }
 
     cloneInputData() {
+        this.displayData.next([...this.loaddata]);
         this.viewdata = [...this.loaddata];
     }
 
@@ -78,6 +97,19 @@ export class DatatableComponent implements AfterViewInit {
     sortedBy(name: string) {}
 
     sortHandler(name: string) {
+        this.headerComponents.forEach(item => {
+            if (item.name === name) {
+                if (item.toggled) {
+                    item.reverse = !item.reverse;
+                } else {
+                    item.toggled = true;
+                    item.reverse = false;
+                }
+            } else {
+                item.reverse = false;
+                item.toggled = false;
+            }
+        });
         this.sortBy(name);
     }
 
@@ -90,25 +122,31 @@ export class DatatableComponent implements AfterViewInit {
     }
 
     searchTable(searchExpression: string) {
+        console.log(searchExpression);
+
         if (this.viewdata === undefined) {
             this.viewdata = [...this.data];
         }
-        this.data = this.viewdata.filter(item => {
+
+        const resultingData = this.viewdata.filter(item => {
             let match = false;
             this.config.forEach(configKey => {
-                const value = item[configKey.key] || '';
-                if (
-                    value
-                        .toString()
-                        .toLowerCase()
-                        .includes(searchExpression.toString().toLowerCase())
-                ) {
+                let value = item[configKey.key] || '';
+                value = value.toString().toLowerCase();
+                const searchLower = searchExpression.toString().toLowerCase();
+                if (value.includes(searchLower)) {
+                    console.log('I AM MATCHED!!!');
+                    console.log(this.viewdata);
+                    console.log(value.toString().toLowerCase());
                     match = true;
                     return true;
                 }
             });
             return match;
         });
+        this.displayData.next(resultingData);
+        this.cdRef.detectChanges();
+        console.log(this.viewdata);
     }
 
     searchEvent(event: any) {
@@ -120,7 +158,7 @@ export class DatatableComponent implements AfterViewInit {
     }
 
     resetData() {
-        this.data = [...this.viewdata];
+        this.viewdata = [...this.data];
     }
 
     colspan(): number {

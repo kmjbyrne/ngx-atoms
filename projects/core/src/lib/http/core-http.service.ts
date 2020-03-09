@@ -26,15 +26,20 @@ export class CoreHttpResourceService<T extends any> {
     public setQueryString(query: string): void {
         this.queryString = this.makeQueryString(query);
     }
+
     public query(query: string): Observable<GetResponse> {
         this.setQueryString(query);
         return this.http.get(this.getEndpoint()).pipe(map((resp: any) => resp as GetResponse));
     }
 
+    public g(resourceId?: string): Observable<GetResponse> {
+        return this.http.get(this.getEndpoint(resourceId)).pipe(map((resp: any) => resp as GetResponse));
+    }
+
     public get(resourceId?: string | number, query?: string): Observable<GetResponse> {
-        if (query) {
-            this.setQueryString(query);
-        }
+        // if (query) {
+        //     this.setQueryString(query);
+        // }
         return this.http.get(this.getEndpoint(resourceId)).pipe(map((resp: any) => resp as GetResponse));
     }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'atom-form-element',
@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class FormsComponent implements OnInit {
     @Input() parent: FormGroup;
     @Input() control: string;
+    @Input() formControl: FormControl;
     @Input() type = 'text';
     @Input() default: string = undefined;
     @Input() submitted = false;

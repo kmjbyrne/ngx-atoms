@@ -12,19 +12,18 @@ export class TableHeaderComponent implements OnInit {
     @Output() emitSortClick: EventEmitter<any> = new EventEmitter();
 
     toggled = false;
+    reverse = false;
 
-    constructor() { }
+    constructor() {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     clickHeader(name: string) {
-        this.toggled = !this.toggled;
+        // this.toggled = !this.toggled;
         this.emitSortClick.emit(name);
     }
 
     issort() {
         return this.toggled && this.name === this.sortKey;
     }
-
 }

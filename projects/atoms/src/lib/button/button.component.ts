@@ -6,10 +6,20 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
+    private ACCEPTED_TYPES = ['warning', 'normal', 'info'];
+
     @Input() display = '';
-    constructor() { }
+    @Input() theme = 'normal';
+
+    constructor() {}
 
     ngOnInit() {
+        if (!this.ACCEPTED_TYPES.includes(this.theme)) {
+            throw Error('Type must be one of accepted types');
+        }
     }
 
+    setClass() {
+        return `atom-button--${this.theme}`;
+    }
 }

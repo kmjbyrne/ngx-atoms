@@ -89,12 +89,17 @@
         align-items: center;
         justify-content: flex-start;
 
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
         span {
             flex: 1;
         }
 
         &:hover {
-            background-color: rgba(72, 198, 255, .8);
+            background-color: rgba(72, 198, 255, 0.8);
         }
     }
 
@@ -111,11 +116,11 @@
         transition: 500ms;
     }
 
-    &--expand>&__parenticon {
+    &--expand > &__parenticon {
         transform: rotateZ(180deg);
     }
 
-    &--expand+&__submenu {
+    &--expand + &__submenu {
         max-height: 500px;
         transition: 500ms;
     }
@@ -134,7 +139,7 @@
         }
     }
 
-    .hide-navbar &--expand+&__submenu {
+    .hide-navbar &--expand + &__submenu {
         max-height: 0px;
     }
 
@@ -147,5 +152,4 @@
     &__icon {
         visibility: visible;
     }
-
 }

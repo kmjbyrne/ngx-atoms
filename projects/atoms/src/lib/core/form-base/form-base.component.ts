@@ -10,7 +10,7 @@ export class AbstractFormComponent {
     submitted = false;
     public componentForm: FormGroup;
 
-    constructor() { }
+    constructor() {}
 
     submit(form: FormGroup) {
         this.submitted = true;

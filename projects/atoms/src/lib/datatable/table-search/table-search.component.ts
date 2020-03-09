@@ -15,7 +15,7 @@ export class TableSearchComponent implements OnInit {
         search: new FormControl('', [Validators.required])
     });
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         this.searchForm.valueChanges.subscribe(value => {
@@ -34,5 +34,4 @@ export class TableSearchComponent implements OnInit {
     onSubmit() {
         this.searchChanged(this.searchForm.value.search);
     }
-
 }
