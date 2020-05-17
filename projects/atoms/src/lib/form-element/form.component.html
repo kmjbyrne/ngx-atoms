@@ -11,11 +11,14 @@
         </ng-container>
 
         <!-- And always keep the label and error on the bottom due to not being able to have multiple ng-contents in one template -->
-        <div class="atom-form__label">
-            <ng-content></ng-content>
+        <div class="atom-form__label-wrapper">
+            <div class="atom-form__label">
+                <ng-content></ng-content>
+            </div>
         </div>
         <ng-container *ngIf="true">
-            <div class="atom-form__error-label" *ngIf="!parent.get(control).valid && submitted"> Required
+            <div class="atom-form__error-label" *ngIf="!parent.get(control).valid && submitted">
+                Required
             </div>
         </ng-container>
 

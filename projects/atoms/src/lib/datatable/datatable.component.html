@@ -6,7 +6,7 @@
         <tr class="datatable__tr">
             <ng-container *ngFor="let header of headers">
                 <th class="datatable__th datatable__sortable">
-                    <lib-table-header [name]="header.name" [sortKey]="currentSortKey"
+                    <lib-table-header [name]="header.name || header.key" [sortKey]="currentSortKey"
                         (emitSortClick)="sortHandler($event)"></lib-table-header>
                 </th>
             </ng-container>
@@ -26,25 +26,46 @@
                         <a href="{{ row[header.name] }}">Link</a>
                     </ng-container>
                     <ng-template #second>
-                        <ng-container *ngIf="header.nested; else unnested"> {{ splitNestedKey(row, header.key) }}
+
+                        <ng-container *ngIf="header.nested; else unnested">
+                            {{ splitNestedKey(row, header.key) }}
                         </ng-container>
-                        <ng-template #unnested> {{ row[header.key] }} </ng-template>
+                        <ng-template #unnested>
+                            <ng-container *ngIf="header.compound">
+                                <ng-container *ngFor="let item of header.compound">
+                                    {{ splitNestedKey(row, item.key) }}
+                                </ng-container>
+                            </ng-container>
+
+                            <ng-container *ngIf="header.func">
+                                {{ header.func(row[header.key]) }}
+                            </ng-container>
+                            <ng-container *ngIf="!header.func">
+                                {{ row[header.key] }}
+                            </ng-container>
+                        </ng-template>
                     </ng-template>
                 </td>
             </ng-container>
             <ng-container *ngIf="actions">
-                <td class="datatable__td datatable__actions" *ngFor="let action of actions">
-                    <ng-container *ngIf="buttonOverride; else default">
-                        <button [ngClass]="buttonOverride"
-                            (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
-                    </ng-container>
-                    <ng-template #default>
-                        <button class="atom-button atom-button--sm"
-                            [class.atom-button--green]="action.key === 'approve'"
-                            [class.atom-button--edit]="action.key === 'edit'"
-                            (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
-                    </ng-template>
-                </td>
+                <ng-container>
+                    <td class="datatable__td datatable__actions">
+                        <ng-container *ngFor="let action of actions ; let idx = index">
+                            <ng-container *ngIf="conditionalCheck(row, action)">
+                                <ng-container *ngIf="buttonOverride; else default">
+                                    <button [ngClass]="buttonOverride"
+                                        (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
+                                </ng-container>
+                                <ng-template #default>
+                                    <button class="atom-button atom-button--sm"
+                                        [class.atom-button--green]="action.key === 'approve'"
+                                        [class.atom-button--edit]="action.key === 'edit'"
+                                        (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
+                                </ng-template>
+                            </ng-container>
+                        </ng-container>
+                    </td>
+                </ng-container>
             </ng-container>
         </tr>
     </tbody>

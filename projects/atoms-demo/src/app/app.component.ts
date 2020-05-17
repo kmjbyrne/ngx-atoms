@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
     title = 'atoms-showcase';
@@ -12,26 +12,26 @@ export class AppComponent implements OnInit {
     data = [
         {
             name: 'test',
-            type: 'test'
+            type: 'test',
         },
         {
             name: '1',
-            type: 'test'
+            type: 'test',
         },
         {
             name: '2',
-            type: 'test'
-        }
+            type: 'test',
+        },
     ];
     config = [
         {
             key: 'name',
-            name: 'name'
+            name: 'name',
         },
         {
             key: 'type',
-            name: 'type'
-        }
+            name: 'type',
+        },
     ];
 
     actions = {
@@ -41,15 +41,12 @@ export class AppComponent implements OnInit {
         items: [
             {
                 name: 'Edit',
-                key: 'edit'
-            }
-        ]
+                key: 'edit',
+            },
+        ],
     };
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
     ngOnInit() {
-        this.http.get('https://jsonplaceholder.typicode.com/todos').subscribe((resp: any) => {
-            console.log(resp);
-        });
+        this.http.get('https://jsonplaceholder.typicode.com/todos').subscribe((resp: any) => {});
     }
-
 }

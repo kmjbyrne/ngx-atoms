@@ -36,9 +36,8 @@
         justify-content: space-between;
     }
 
-    &__select,
-    &__input,
-    &__label {
+    // &__select,
+    &__input {
         padding: 0 1.5rem;
     }
 
@@ -60,7 +59,19 @@
     }
 
     select {
-        text-indent: 0.5rem;
+        text-indent: 0.85rem;
+        // padding: 0 1.5rem;
+        // -webkit-appearance: none;
+    }
+
+    &__label-wrapper {
+        top: 50%;
+        position: absolute;
+        width: 100%;
+        transform: translateY(-50%);
+        left: 0;
+        height: 100%;
+        margin: 0 1.5rem;
     }
 
     &__file-input {
@@ -88,6 +99,7 @@
         display: inline-block;
         z-index: 0;
         overflow: hidden;
+        transform-origin: top left;
         padding: 0.625rem 1.25rem;
     }
 
@@ -100,7 +112,8 @@
         left: 0;
         color: inherit;
         font-weight: 300;
-        margin: 0 1rem 0 0;
+        transform-origin: top left;
+        // margin: 0 1rem 0 0;
         -webkit-transition: 0.2s ease;
         transition: 0.2s ease;
         background-color: inherit;
@@ -125,25 +138,22 @@
         border-color: black;
     }
 
-    &--active &__label,
-    &__input:focus + &__label,
-    &__input:valid + &__label {
+    &--active &__label-wrapper &__label,
+    &__input:focus + &__label-wrapper &__label,
+    &__input:valid + &__label-wrapper &__label {
         color: inherit;
-        transform: translate(0%, -170%);
-        font-size: 0.7rem;
+        transform: scale(0.75) !important;
         height: 15px;
-        padding: 0;
+        top: 0.4rem;
         font-weight: 500;
         border-color: green;
-        margin-left: 1.59rem;
+        // margin-left: 1.59rem;
         background-color: transparent;
     }
 
-    &__select:focus + &__label,
-    &__select:valid + &__label {
-        // color: rgb(151, 18, 18);
-        -webkit-transform: translate(-12.5%, -190%) scale(0.75) !important;
-        transform: translate(-12.5%, -190%) scale(0.75) !important;
+    &__select:focus + &__label-wrapper &__label,
+    &__select:valid + &__label-wrapper &__label {
+        transform: translateY(-1.85rem) scale(0.75) !important;
         height: 15px;
         font-weight: 500;
         border-color: green;

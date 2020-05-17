@@ -8,7 +8,7 @@ import {
     AfterContentInit,
     AfterViewChecked,
     ChangeDetectorRef,
-    ViewChildren
+    ViewChildren,
 } from '@angular/core';
 import { TableHeaderComponent } from './table-header/table-header.component';
 import { BehaviorSubject } from 'rxjs';
@@ -17,7 +17,7 @@ import { BehaviorSubject } from 'rxjs';
     // tslint:disable-next-line: component-selector
     selector: 'atom-datatable',
     templateUrl: 'datatable.component.html',
-    styleUrls: ['datatable.component.scss']
+    styleUrls: ['datatable.component.scss'],
 })
 export class DatatableComponent implements AfterViewChecked {
     @Input() config: any[];
@@ -43,7 +43,7 @@ export class DatatableComponent implements AfterViewChecked {
 
     get headers() {
         if (this.config) {
-            return this.config.filter(item => item.schema !== false);
+            return this.config.filter((item) => item.schema !== false);
         }
     }
 
@@ -71,10 +71,23 @@ export class DatatableComponent implements AfterViewChecked {
         return array;
     }
 
+    conditionalCheck(row, action) {
+        let pass = true;
+        if (action.condition) {
+            Object.keys(action.condition).forEach((key) => {
+                if (row[key] !== action.condition[key]) {
+                    pass = false;
+                    return;
+                }
+            });
+        }
+        return pass;
+    }
+
     splitNestedKey(row: any, header: any) {
         const keys = header.toString().split('.');
         let value = row[keys.shift()];
-        keys.forEach(items => {
+        keys.forEach((items) => {
             value = value[items];
         });
         return value;
@@ -97,7 +110,7 @@ export class DatatableComponent implements AfterViewChecked {
     sortedBy(name: string) {}
 
     sortHandler(name: string) {
-        this.headerComponents.forEach(item => {
+        this.headerComponents.forEach((item) => {
             if (item.name === name) {
                 if (item.toggled) {
                     item.reverse = !item.reverse;
@@ -116,28 +129,23 @@ export class DatatableComponent implements AfterViewChecked {
     emitActionEvent(eventKey: string, eventObject: any) {
         const event = {
             key: eventKey,
-            object: eventObject
+            object: eventObject,
         };
         this.clickEvent.emit(event);
     }
 
     searchTable(searchExpression: string) {
-        console.log(searchExpression);
-
         if (this.viewdata === undefined) {
             this.viewdata = [...this.data];
         }
 
-        const resultingData = this.viewdata.filter(item => {
+        const resultingData = this.viewdata.filter((item) => {
             let match = false;
-            this.config.forEach(configKey => {
+            this.config.forEach((configKey) => {
                 let value = item[configKey.key] || '';
                 value = value.toString().toLowerCase();
                 const searchLower = searchExpression.toString().toLowerCase();
                 if (value.includes(searchLower)) {
-                    console.log('I AM MATCHED!!!');
-                    console.log(this.viewdata);
-                    console.log(value.toString().toLowerCase());
                     match = true;
                     return true;
                 }
@@ -146,7 +154,6 @@ export class DatatableComponent implements AfterViewChecked {
         });
         this.displayData.next(resultingData);
         this.cdRef.detectChanges();
-        console.log(this.viewdata);
     }
 
     searchEvent(event: any) {

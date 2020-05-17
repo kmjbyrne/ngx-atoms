@@ -3,14 +3,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'atom-menu',
     templateUrl: './menu.component.html',
-    styleUrls: ['./menu.component.scss']
+    styleUrls: ['./menu.component.scss'],
 })
 export class AtomMenuComponent implements OnInit {
     @Input() config = [];
     @Input() isToggled = true;
     @Output() linkEvent = new EventEmitter();
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         this.config = [
@@ -20,26 +20,26 @@ export class AtomMenuComponent implements OnInit {
                 nested: [
                     {
                         label: 'test',
-                        route: 'test'
+                        route: 'test',
                     },
                     {
                         label: 'test',
-                        route: 'test'
-                    }
-                ]
+                        route: 'test',
+                    },
+                ],
             },
             {
                 label: 'test',
-                route: 'test'
+                route: 'test',
             },
             {
                 label: 'test',
-                route: 'test'
+                route: 'test',
             },
             {
                 label: 'test',
-                route: 'test'
-            }
+                route: 'test',
+            },
         ];
     }
 
@@ -47,13 +47,9 @@ export class AtomMenuComponent implements OnInit {
         this.isToggled = !this.isToggled;
     }
 
-
     getRoute(link: string, child = false): string {
         return child ? `${link}/${child}` : `${link}`;
     }
 
-    catchLink(link) {
-        console.log(link);
-    }
-
+    catchLink(link) {}
 }

@@ -23,6 +23,14 @@ export class CoreHttpResourceService<T extends any> {
         return '?' + expression;
     }
 
+    private parseToQs(payload: any) {
+        let querystring = '?';
+        Object.keys(payload).forEach((key) => {
+            querystring += `${key}=${payload[key]}`;
+        });
+        return querystring;
+    }
+
     public setQueryString(query: string): void {
         this.queryString = this.makeQueryString(query);
     }
@@ -32,26 +40,49 @@ export class CoreHttpResourceService<T extends any> {
         return this.http.get(this.getEndpoint()).pipe(map((resp: any) => resp as GetResponse));
     }
 
-    public g(resourceId?: string): Observable<GetResponse> {
+    public g(resourceId?: string | number): Observable<GetResponse> {
         return this.http.get(this.getEndpoint(resourceId)).pipe(map((resp: any) => resp as GetResponse));
     }
 
-    public get(resourceId?: string | number, query?: string): Observable<GetResponse> {
-        // if (query) {
-        //     this.setQueryString(query);
-        // }
+    public _get(resourceId?: string | number, query?: any): Observable<GetResponse> {
+        let request = this.getEndpoint(resourceId);
+        if (query) {
+            request += this.parseToQs(query);
+        }
+        return this.http.get(request).pipe(map((resp: any) => resp as GetResponse));
+    }
+
+    public get(resourceId?: string | number, query?: any): Observable<GetResponse> {
+        let request = this.getEndpoint(resourceId);
+        if (query) {
+            request += this.parseToQs(query);
+        }
         return this.http.get(this.getEndpoint(resourceId)).pipe(map((resp: any) => resp as GetResponse));
+    }
+
+    public one(resourceId: string | number, query?: any): Observable<GetResponse> {
+        const qs = this.makeQueryString(query);
+        this.queryString = '';
+        let request = this.getEndpoint(resourceId);
+        if (qs) {
+            request += qs;
+        }
+        return this.http.get(request).pipe(map((resp: any) => resp as GetResponse));
     }
 
     public post(data: T): any {
         return this.http.post(this.getEndpoint(), data).pipe(map((resp: any) => resp as any));
     }
 
-    public put(id: string, data: T): any {
+    public put(id: string | number, data: T): any {
         return this.http.put(this.getEndpoint(id), data).pipe(map((resp: any) => resp as any));
     }
 
-    public delete(id: string): any {
+    public _put(endpoint: string, data?: T): any {
+        return this.http.put(endpoint, data).pipe(map((resp: any) => resp as any));
+    }
+
+    public delete(id: string | number): any {
         return this.http.delete(this.getEndpoint(id)).pipe(map((resp: any) => resp as any));
     }
 }

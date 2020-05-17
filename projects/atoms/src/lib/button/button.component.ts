@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
-    private ACCEPTED_TYPES = ['warning', 'normal', 'info'];
+    private ACCEPTED_TYPES = ['warning', 'normal', 'info', 'success'];
 
     @Input() display = '';
     @Input() theme = 'normal';
