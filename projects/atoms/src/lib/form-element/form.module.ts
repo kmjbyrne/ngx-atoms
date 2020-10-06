@@ -1,20 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsComponent } from './form.component';
+import { AtomFormsComponent } from './form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { LabelBlockComponent } from './label-block/label-block.component';
 
 @NgModule({
-    declarations: [FormsComponent],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-    ],
-    exports: [
-        FormsComponent,
-        FormsModule,
-        ReactiveFormsModule,
-    ]
+    declarations: [AtomFormsComponent, LabelBlockComponent],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule],
+    exports: [AtomFormsComponent, FormsModule, ReactiveFormsModule],
 })
-export class AtomsFormsElementModule { }
+export class AtomsFormsElementModule {}

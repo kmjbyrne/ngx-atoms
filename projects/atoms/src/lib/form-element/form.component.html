@@ -1,26 +1,64 @@
-<form class="atom-form" [formGroup]="parent" (submit)="onSubmit()" [class.atom-form--readonly]="readonly">
-
-    <div class="atom-form__group" [class.atom-form--active]="modified">
-        <ng-container *ngIf="type === 'select'">
-            <select class="atom-form__select" [formControlName]="control" required>
-                <option *ngFor="let item of options" [value]="item.key" [selected]="defaultSelect">{{item.value}}</option>
+<form class="atom-form" [formGroup]="parent" (submit)="onSubmit()" [class.atom-form--readonly]="readonly" [class.atom-form--bordered]="border">
+    <div class="atom-form__group"
+        *ngIf="type !== 'radio' && type !== 'checkbox'"
+        [class.atom-form--valid]="parent.get(control).valid"
+        [class.atom-form--active]="modified"
+        [class.atom-form--touched]="parent.get(control).value"
+        [class.atom-form--invalid]="!parent.get(control).valid && parent.get(control).value">
+        <ng-container *ngIf="type === 'select' && options">
+            <select class="atom-form__select" [formControlName]="control" *ngIf="options && !multi" [compareWith]="compareFn">
+                <option *ngFor="let item of options" [ngValue]="pick ? item[pick] : item">
+                    <atom-label-block [item]="item" [label]="label" [key]="key"></atom-label-block>
+                </option>
+            </select>
+            <select class="atom-form__select" [formControlName]="control" *ngIf="options && multi" [compareWith]="compareFn" multiple>
+                <option *ngFor="let item of options" [ngValue]="pick ? item[pick] : item">
+                    <atom-label-block [item]="item" [label]="label" [key]="key"></atom-label-block>
+                </option>
             </select>
         </ng-container>
-        <ng-container *ngIf="type !== 'select'">
-            <input class="atom-form__input" [type]="type" required autocomplete="off" [formControlName]="control" [readonly]="readonly">
+        <ng-container *ngIf="type !== 'select' && !options">
+            <input class="atom-form__input" [type]="type" autocomplete="off" [formControlName]="control" [readonly]="readonly">
         </ng-container>
-
         <!-- And always keep the label and error on the bottom due to not being able to have multiple ng-contents in one template -->
-        <div class="atom-form__label-wrapper">
+        <div class="atom-form__label-wrapper"
+            *ngIf="type !== 'radio'"
+            [class.atom-form--invalid]="!parent.get(control).valid && submitted">
             <div class="atom-form__label">
                 <ng-content></ng-content>
+                <ng-content class="atom-form__icon" *ngIf="showLabelSuccess(control)" select="[icon]"></ng-content>
+                <span *ngIf="!parent.get(control).valid && submitted"> (Is Required)</span>
             </div>
+            <ng-container *ngIf="icons">
+                <div class="atom-form__icon" *ngIf="parent.get(control).valid">
+                    <i class="material-icons">check_box</i>
+                </div>
+                <div class="atom-form__icon" *ngIf="!parent.get(control).valid &&submitted">
+                    <i class="material-icons">error</i>
+                </div>
+            </ng-container>
         </div>
-        <ng-container *ngIf="true">
+        <!-- <ng-container *ngIf="true">
             <div class="atom-form__error-label" *ngIf="!parent.get(control).valid && submitted">
                 Required
             </div>
-        </ng-container>
-
+        </ng-container> -->
+        <span class="atom-form__bar"></span>
     </div>
+    <ng-container *ngIf="type === 'radio' && options">
+        <ng-container *ngFor="let item of options; let idx = index">
+            <input type="radio" [id]="idx" [name]="control" [value]="item">
+            <label [for]="idx">
+                <atom-label-block [item]="item" [label]="label" [itemkey]="itemkey"></atom-label-block>
+            </label>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="type === 'checkbox' && options">
+        <ng-container *ngFor="let item of options; let idx = index">
+            <input type="checkbox" [id]="idx" [name]="control" [checked]="item">
+            <label [for]="idx">
+                <atom-label-block [item]="item" [label]="label" [itemkey]="itemkey"></atom-label-block>
+            </label>
+        </ng-container>
+    </ng-container>
 </form>

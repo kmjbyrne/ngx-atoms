@@ -8,7 +8,7 @@
                 <div class="header__menu-links">
                     <div class="header__menu-link" *ngFor="let item of config.center">
                         <a class="header__link" [routerLink]="[item.route]">
-                            <fa-icon class="header__icon" [icon]="['fas', item.icon]" [fixedWidth]="true"></fa-icon>
+                            <!-- <fa-icon class="header__icon" [icon]="['fas', item.icon]" [fixedWidth]="true"></fa-icon> -->
                             <span class="header__menu-link-display">{{ item.label }}</span>
                         </a>
                     </div>
@@ -19,7 +19,7 @@
             <ul class="header__menu-links" *ngFor="let item of config.right">
                 <li class="header__menu-link">
                     <a class="header__link" [routerLink]="[item.route]">
-                        <fa-icon [icon]="['fas', item.icon]"></fa-icon>
+                        <!-- <fa-icon [icon]="['fas', item.icon]"></fa-icon> -->
                         <span class="header__menu-link-display">{{ item.label }}</span>
                     </a>
                 </li>

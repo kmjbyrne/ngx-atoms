@@ -1,0 +1,20 @@
+<atom-panel title="Atom Forms Module">
+    <p>Breakdown of some data ...</p>
+    <atom-button (click)="submit()">Button</atom-button>
+
+    <div class="row">
+        <div class="col-6-gap">
+            <atom-form-element [parent]="form" control="name">Name</atom-form-element>
+        </div>
+        <div class="col-6-gap">
+            <atom-form-element [parent]="form" type="select" control="dropdown" [options]="options" label="value">Dropdown Select
+            </atom-form-element>
+        </div>
+    </div>
+
+    <atom-form-element [parent]="form" type="select" control="single" [options]="nonObjectOptions" default="N">Dropdown Select</atom-form-element>
+
+    <div>
+        <markdown src="./assets/docs/forms.docs.md"></markdown>
+    </div>
+</atom-panel>

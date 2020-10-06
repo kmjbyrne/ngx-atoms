@@ -6,7 +6,6 @@ import { AtomPanelModule } from './panel/atom-panel.module';
 import { TodoListModule } from './todo-list/todo-list.module';
 import { AtomLoadingSpinnerModule } from './loading-spinner/loading-spinner.module';
 import { AtomsFormsElementModule } from './form-element/form.module';
-import { AbstractFormComponent } from './core/form-base/form-base.component';
 import { AtomButtonModule } from './button/button.module';
 import { CardsModule } from './cards/cards.module';
 import { AtomDatatableModule } from './datatable/datatable.module';
@@ -14,7 +13,7 @@ import { MenuModule } from './menu/menu.module';
 import { AtomAlertsModule } from './alerts/alerts.module';
 
 @NgModule({
-    declarations: [AbstractFormComponent],
+    declarations: [],
     providers: [],
     imports: [
         AtomButtonModule,
@@ -28,12 +27,9 @@ import { AtomAlertsModule } from './alerts/alerts.module';
         AtomPanelModule,
         TodoListModule,
         AtomLoadingSpinnerModule,
-        AtomsFormsElementModule
+        AtomsFormsElementModule,
     ],
     exports: [
-        // Components
-        AbstractFormComponent,
-        // Modules
         AtomButtonModule,
         CardsModule,
         AtomDatatableModule,
@@ -45,7 +41,7 @@ import { AtomAlertsModule } from './alerts/alerts.module';
         AtomPanelModule,
         TodoListModule,
         AtomLoadingSpinnerModule,
-        AtomsFormsElementModule
-    ]
+        AtomsFormsElementModule,
+    ],
 })
 export class AtomsModule {}

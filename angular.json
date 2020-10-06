@@ -16,9 +16,7 @@
                         "project": "projects/atoms/ng-package.json"
                     },
                     "configurations": {
-                        "production": {
-
-                        }
+                        "production": {}
                     }
                 },
                 "test": {
@@ -32,13 +30,8 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "projects/atoms/tsconfig.lib.json",
-                            "projects/atoms/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
+                        "tsConfig": ["projects/atoms/tsconfig.lib.json", "projects/atoms/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**"]
                     }
                 }
             }
@@ -67,13 +60,8 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "projects/core/tsconfig.lib.json",
-                            "projects/core/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
+                        "tsConfig": ["projects/core/tsconfig.lib.json", "projects/core/tsconfig.spec.json"],
+                        "exclude": ["**/node_modules/**"]
                     }
                 }
             }
@@ -98,14 +86,17 @@
                         "polyfills": "projects/atoms-demo/src/polyfills.ts",
                         "tsConfig": "projects/atoms-demo/tsconfig.app.json",
                         "aot": false,
-                        "assets": [
-                            "projects/atoms-demo/src/favicon.ico",
-                            "projects/atoms-demo/src/assets"
-                        ],
+                        "assets": ["projects/atoms-demo/src/favicon.ico", "projects/atoms-demo/src/assets"],
                         "styles": [
-                            "projects/atoms-demo/src/styles.scss"
+                            "projects/atoms-demo/src/styles.scss",
+                            "node_modules/prismjs/themes/prism-okaidia.css",
+                            "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/marked/lib/marked.js",
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+                        ]
                     },
                     "configurations": {
                         "production": {
@@ -160,13 +151,8 @@
                         "polyfills": "projects/atoms-demo/src/polyfills.ts",
                         "tsConfig": "projects/atoms-demo/tsconfig.spec.json",
                         "karmaConfig": "projects/atoms-demo/karma.conf.js",
-                        "assets": [
-                            "projects/atoms-demo/src/favicon.ico",
-                            "projects/atoms-demo/src/assets"
-                        ],
-                        "styles": [
-                            "projects/atoms-demo/src/styles.scss"
-                        ],
+                        "assets": ["projects/atoms-demo/src/favicon.ico", "projects/atoms-demo/src/assets"],
+                        "styles": ["projects/atoms-demo/src/styles.scss"],
                         "scripts": []
                     }
                 },
@@ -178,9 +164,7 @@
                             "projects/atoms-demo/tsconfig.spec.json",
                             "projects/atoms-demo/e2e/tsconfig.json"
                         ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
+                        "exclude": ["**/node_modules/**"]
                     }
                 },
                 "e2e": {

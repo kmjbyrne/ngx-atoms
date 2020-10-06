@@ -1,1 +1,4 @@
-<a class="atom-button" [ngClass]="setClass()">{{ display }}</a>
+<span class="atom-button atom-button-block" [ngClass]="setClass()">
+    <ng-content></ng-content>
+    {{ display }}
+</span>

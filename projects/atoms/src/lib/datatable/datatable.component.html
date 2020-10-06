@@ -38,10 +38,10 @@
                             </ng-container>
 
                             <ng-container *ngIf="header.func">
-                                {{ header.func(row[header.key]) }}
+                                <span>{{ header.func(row[header.key]) }}</span>
                             </ng-container>
                             <ng-container *ngIf="!header.func">
-                                {{ row[header.key] }}
+                                <span>{{ row[header.key] }}</span>
                             </ng-container>
                         </ng-template>
                     </ng-template>
@@ -54,13 +54,13 @@
                             <ng-container *ngIf="conditionalCheck(row, action)">
                                 <ng-container *ngIf="buttonOverride; else default">
                                     <button [ngClass]="buttonOverride"
-                                        (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
+                                        (click)="emitActionEvent(action.key, row)">{{ action.name || action.key }}</button>
                                 </ng-container>
                                 <ng-template #default>
                                     <button class="atom-button atom-button--sm"
                                         [class.atom-button--green]="action.key === 'approve'"
                                         [class.atom-button--edit]="action.key === 'edit'"
-                                        (click)="emitActionEvent(action.key, row)">{{ action.key }}</button>
+                                        (click)="emitActionEvent(action.key, row)">{{ action.name || action.key }}</button>
                                 </ng-template>
                             </ng-container>
                         </ng-container>

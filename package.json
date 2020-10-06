@@ -11,6 +11,11 @@
         "big-build": "ng build atoms ; ng build core",
         "release": "standard-version"
     },
+    "ngPackage": {
+        "assets": [
+            "projects/assets/*"
+        ]
+    },
     "private": true,
     "dependencies": {
         "@angular/animations": "~9.0.2",
@@ -21,6 +26,7 @@
         "@angular/platform-browser": "~9.0.2",
         "@angular/platform-browser-dynamic": "~9.0.2",
         "@angular/router": "~9.0.2",
+        "ngx-markdown": "^10.1.1",
         "rxjs": "~6.5.4",
         "tslib": "^1.11.0",
         "zone.js": "~0.10.2"
@@ -35,6 +41,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.27",
         "@fortawesome/free-regular-svg-icons": "^5.12.1",
         "@fortawesome/free-solid-svg-icons": "^5.12.1",
+        "@snapatoms/core": "0.0.4",
         "@types/jasmine": "~3.5.6",
         "@types/jasminewd2": "~2.0.8",
         "@types/node": "~13.7.4",

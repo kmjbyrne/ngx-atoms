@@ -1,0 +1,12 @@
+<ng-container *ngIf="label">
+    {{ item[label] }}
+</ng-container>
+<ng-container *ngIf="itemkey && !label">
+    {{ item[itemkey] }}
+</ng-container>
+<ng-container *ngIf="(!itemkey && !label) && !item.value">
+    {{ item.value }}
+</ng-container>
+<ng-container *ngIf="!label && !itemkey">
+    {{ item }}
+</ng-container>

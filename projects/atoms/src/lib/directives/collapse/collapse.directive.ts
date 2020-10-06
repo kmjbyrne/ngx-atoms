@@ -1,7 +1,7 @@
-import { Directive, HostBinding, Input, ElementRef, AfterViewInit, DoCheck, OnChanges } from '@angular/core';
+import { Directive, HostBinding, Input, ElementRef, AfterViewInit, DoCheck, OnChanges, HostListener } from '@angular/core';
 
 @Directive({
-    selector: '[atomCollapse]'
+    selector: '[atomCollapse]',
 })
 export class CollapseDirective implements AfterViewInit, DoCheck {
     @HostBinding('class.collapsing') public isCollapsing: boolean;
@@ -13,6 +13,7 @@ export class CollapseDirective implements AfterViewInit, DoCheck {
     }
 
     @Input() minHeight: number;
+
     private lastState = false;
     private initHeight: number;
 
@@ -21,6 +22,14 @@ export class CollapseDirective implements AfterViewInit, DoCheck {
     ngDoCheck() {
         this.measureHeight();
     }
+
+    @HostListener('window:resize')
+    onResize() {
+        // call our matchHeight function here
+        this.matchHeight(this.el.nativeElement, this.el);
+    }
+
+    matchHeight(element, height) {}
 
     ngAfterViewInit() {
         this.measureHeight();

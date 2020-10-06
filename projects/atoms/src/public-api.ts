@@ -15,7 +15,6 @@ export * from './lib/button/button.module';
 export * from './lib/cards/cards.component';
 export * from './lib/menu/menu.component';
 export * from './lib/datatable/datatable.component';
-export * from './lib/core/form-base/form-base.component';
 export * from './lib/alerts/alerts.component';
 
 // Directives export
@@ -34,6 +33,6 @@ export * from './lib/datatable/datatable.module';
 export * from './lib/cards/cards.module';
 export * from './lib/directives/directives.module';
 export * from './lib/alerts/alerts.module';
+import { AbstractFormComponent } from './lib/components/abstract-form/abstract-form.component';
 
-export * from './lib/atoms.service';
 export * from './lib/atoms.module';

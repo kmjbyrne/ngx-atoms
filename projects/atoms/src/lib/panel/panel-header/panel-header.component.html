@@ -4,7 +4,8 @@
     <ng-container *ngIf="toggle">
         <div class="atom-panel-header__options">
             <a class="atom-panel-header__toggle icon-angle-down">
-                <fa-icon icon="angle-down"></fa-icon>
+                <!-- <fa-icon icon="angle-down"></fa-icon> -->
+                <ng-content></ng-content>
             </a>
         </div>
     </ng-container>

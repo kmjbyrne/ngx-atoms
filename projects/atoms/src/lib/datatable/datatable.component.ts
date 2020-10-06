@@ -26,7 +26,7 @@ export class DatatableComponent implements AfterViewChecked {
     @Input() actions: any;
     @Input() buttonOverride: any;
     @Input() formstyles: any;
-    @Input() search = true;
+    @Input() search = false;
     @Input() editable = true;
 
     @Output() clickEvent = new EventEmitter();
@@ -61,6 +61,9 @@ export class DatatableComponent implements AfterViewChecked {
 
     cloneInputData() {
         this.displayData.next([...this.loaddata]);
+        this.displayData.subscribe((rows) => {
+            this.viewdata = rows;
+        });
         this.viewdata = [...this.loaddata];
     }
 
@@ -139,7 +142,7 @@ export class DatatableComponent implements AfterViewChecked {
             this.viewdata = [...this.data];
         }
 
-        const resultingData = this.viewdata.filter((item) => {
+        const resultingData = this.data.filter((item) => {
             let match = false;
             this.config.forEach((configKey) => {
                 let value = item[configKey.key] || '';
@@ -152,8 +155,12 @@ export class DatatableComponent implements AfterViewChecked {
             });
             return match;
         });
-        this.displayData.next(resultingData);
+        this.displayData.next([...resultingData]);
         this.cdRef.detectChanges();
+    }
+
+    editEvent(row, header) {
+        console.log(row, header);
     }
 
     searchEvent(event: any) {

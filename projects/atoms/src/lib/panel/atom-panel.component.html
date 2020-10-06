@@ -1,5 +1,6 @@
 <div class="atom-panel" [ngClass]="{'atom-panel--toggled' : isToggled}">
-    <atom-panel-header [title]="title" [subtitle]="subtitle" [toggle]="toggle" (clickedHeader)="eventHandler($event)">
+    <atom-panel-header [title]="title" [subtitle]="subtitle" [toggle]="toggle" [isToggled]="isToggled" (clickedHeader)="eventHandler($event)">
+        <ng-content select="icon"></ng-content>
     </atom-panel-header>
     <div class="atom-panel__image" *ngIf="image">
         <img [src]="image">

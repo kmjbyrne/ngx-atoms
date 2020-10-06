@@ -1,75 +1,72 @@
-@import '../abstract/variables.scss';
+:host {
+    &:not(:last-child) {
+        margin-right: 1rem;
+    }
 
-:host:not(:first-child) {
-    margin: 0 0.25rem 0 0.25rem;
-    // padding: 0.75rem 1rem;
+    display: inline-block;
+    text-align: center;
+    text-shadow: none;
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 21px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    -webkit-appearance: none;
+    white-space: nowrap;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    text-shadow: none;
+    font-weight: 500;
+    margin-bottom: 1rem;
 }
 
-//
+.atom-button-block {
+    display: block;
+}
 
 .atom-button {
-    display: inline-block;
+    border: 1px solid #329ad6;
+    color: #329ad6;
+    background: #96969621;
+    min-width: 5rem;
+    text-transform: capitalize;
     padding: 0.5rem 1rem;
-    background-color: rgb(12, 52, 126);
-    color: white;
-    background-color: #811616;
-    color: #dadada;
-    border: none;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    line-height: 2.8;
-    padding: 0 1.5em;
-    text-transform: uppercase;
-    overflow: hidden;
-    border-radius: 3px;
-    margin: 2px 2px 2px 0px;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s, opacity 0.3s;
-    outline: none;
 
     &:hover {
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.3);
-        color: #fff;
+        color: white;
+        background: #329ad6;
     }
 
     &--sm {
-        font-size: 0.6rem;
-        padding: 0rem 0.5rem;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.45rem;
+        min-width: 1rem;
     }
 
-    &--edit {
-        background-color: gold;
-        color: black;
-
-        &:hover {
-            color: black;
-        }
+    &--fw {
+        width: 100%;
     }
+}
 
-    &--warning {
-        background-color: rgb(168, 157, 0);
+.atom-button-theme-red {
+    border-color: #811616;
+    color: #811616;
+
+    &:hover {
         color: white;
-
-        &:hover {
-            color: black;
-        }
+        background: #811616;
     }
+}
 
-    &--info {
-        background-color: $info-dark;
+.atom-button-theme-success {
+    border-color: green;
+    color: green;
+
+    &:hover {
         color: white;
-
-        &:hover {
-            color: black;
-        }
-    }
-
-    &--success {
-        background-color: green;
-        color: white;
-
-        &:hover {
-            color: white;
-        }
+        background: green;
     }
 }

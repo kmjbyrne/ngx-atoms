@@ -4,13 +4,6 @@
         </atom-menu>
         <div class="ui-content" [hidden]="!loaded">
             <div class="ui-inner">
-                <atom-panel [title]="'Atom Panel Showcase'" [toggle]="true">
-                    <p>Breakdown of some data ...</p>
-                    <atom-button></atom-button>
-                    <atom-datatable [data]="data" [config]="config" [actions]="actions">
-                    </atom-datatable>
-                </atom-panel>
-                <atom-loading-spinner></atom-loading-spinner>
                 <router-outlet></router-outlet>
             </div>
         </div>

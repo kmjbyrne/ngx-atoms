@@ -3,21 +3,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'atom-panel-header',
     templateUrl: './panel-header.component.html',
-    styleUrls: ['./panel-header.component.scss']
+    styleUrls: ['./panel-header.component.scss'],
 })
 export class PanelHeaderComponent implements OnInit {
     @Input() title: string;
     @Input() subtitle: string;
     @Input() toggle = false;
-
-    isToggled = false;
+    @Input() isToggled = false;
 
     @Output() clickedHeader = new EventEmitter();
 
-    constructor() { }
+    constructor() {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     togglePanel() {
         if (this.toggle) {
@@ -25,5 +23,4 @@ export class PanelHeaderComponent implements OnInit {
             this.clickedHeader.emit(this.isToggled);
         }
     }
-
 }

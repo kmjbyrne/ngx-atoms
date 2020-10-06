@@ -1,6 +1,7 @@
 :host {
     flex: 1;
 }
+
 .alert {
     position: relative;
     margin: 1rem 0;
@@ -14,21 +15,24 @@
     }
 
     &--warning {
-        color: #856404;
+        color: black;
         background-color: #fff3cd;
-        border-color: #ffeeba;
+        border-color: #ce9811;
+        box-shadow: 3px 5px 6px 0 #ffeeba;
     }
 
     &--success {
         color: white;
         background-color: #087216;
-        border-color: #ffeeba;
+        border-color: #087216;
+        box-shadow: 3px 5px 6px 0px #087216;
     }
 
     &--info {
-        color: rgb(44, 44, 44);
-        background-color: #cde9ff;
-        border-color: #b1ddff;
+        color: #2c2c2c;
+        background-color: #cde9ff6b;
+        border-color: #b1c4ff;
+        box-shadow: 3px 5px 6px 0px #1e4db71f;
     }
 
     &__close {

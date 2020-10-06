@@ -1,8 +1,8 @@
 <div class="alert" [ngClass]="setClass()" *ngIf="!hide">
     <div class="alert__heading">
-        <p><strong>NOTE: </strong>{{ heading }}</p>
-        <ng-content>
-        </ng-content>
+        <p><strong>NOTE: </strong>{{ heading }} <ng-content>
+            </ng-content>
+        </p>
     </div>
     <div class="alert__close" (click)="hideAlert()"><span>x</span></div>
 </div>
